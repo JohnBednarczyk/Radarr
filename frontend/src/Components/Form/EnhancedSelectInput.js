@@ -28,6 +28,18 @@ function getSelectedOption(selectedIndex, values) {
   return values[selectedIndex];
 }
 
+function getMinId(values) {
+  let low = Number.POSITIVE_INFINITY;
+
+  for (let i = values.length - 1; i >= 0 ; i--) {
+    let temp = values[i].key;
+    if (temp < low) {
+      low = temp;
+    }
+  }
+  return low;
+}
+
 function findIndex(startingIndex, direction, values) {
   let indexToTest = startingIndex + direction;
 
@@ -332,6 +344,7 @@ class EnhancedSelectInput extends Component {
 
     const isMultiSelect = Array.isArray(value);
     const selectedOption = getSelectedOption(selectedIndex, values);
+    const minId = getMinId(values);
 
     return (
       <div>
@@ -479,6 +492,8 @@ class EnhancedSelectInput extends Component {
                                 <OptionComponent
                                   key={v.key}
                                   id={v.key}
+                                  minId={minId}
+                                  name={name}
                                   depth={depth}
                                   isSelected={isSelectedItem(index, this.props)}
                                   isDisabled={parentSelected}
@@ -527,6 +542,8 @@ class EnhancedSelectInput extends Component {
                         <OptionComponent
                           key={v.key}
                           id={v.key}
+                          minId={minId}
+                          name={name}
                           depth={depth}
                           isSelected={isSelectedItem(index, this.props)}
                           isMultiSelect={isMultiSelect}
