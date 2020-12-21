@@ -45,8 +45,8 @@ function HintedSelectInputOption(props) {
         </div>
       </EnhancedSelectInputOption>
       {
-        ((props.name === "language" || props.name === "movieInfoLanguage") && id === props.minId) &&
-          <div className={styles.divider}/>
+        ((props.name === 'language' || props.name === 'movieInfoLanguage') && id === props.minId) &&
+          <div className={styles.divider} />
       }
     </div>
   );

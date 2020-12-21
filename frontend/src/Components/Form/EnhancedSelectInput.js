@@ -31,8 +31,8 @@ function getSelectedOption(selectedIndex, values) {
 function getMinId(values) {
   let low = Number.POSITIVE_INFINITY;
 
-  for (let i = values.length - 1; i >= 0 ; i--) {
-    let temp = values[i].key;
+  for (let i = values.length - 1; i >= 0; i--) {
+    const temp = values[i].key;
     if (temp < low) {
       low = temp;
     }
